@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="./theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-auto-animate>
+                <h2>Basics of C Programming</h2>
+            </section>
+            <section data-auto-animate>
+                <h3>Most basic C program</h3>
+                <div style="display: grid; grid-template-rows: auto auto;">
+                    <div class="fragment" style="grid-row: 0 1;">
+                        <pre>
+                            <code data-trim data-noescape data-line-numbers="1|2-3,6|4-5|" class="c++">
+                                #include &lt;header_file.h&gt;
+                                type function name ( inputs and outputs )
+                                {
+                                    Your C code goes here;
+                                    return value;
+                                }
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="fragment" style="grid-row: 1 2;">
+                        <pre>
+                            <code data-trim data-noescape data-line-numbers="1|2-3,6|4-5|" class="c++">
+                                #include &lt;stdio.h&gt;
+                                int main ()
+                                {
+                                    printf(”Hello, World! \n”);
+                                    return 0;
+                                }
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
