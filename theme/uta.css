@@ -231,12 +231,14 @@ section.has-light-background h6 {
 
 .reveal code {
     font-family: var(--r-code-font);
+    color: lightskyblue; /* Apply color to just the code block */
     text-transform: none;
     tab-size: 2;
 }
 
 .reveal pre code {
     display: block;
+    color: unset; /* Remove the color application from code block if pre and code both are used. */
     padding: 5px;
     overflow: auto;
     max-height: 400px;

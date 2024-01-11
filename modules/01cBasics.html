@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
+    <title>Basics of C Programming</title>
 
     <link rel="stylesheet" href="../reveal.js/dist/reset.css">
     <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
@@ -29,8 +29,7 @@
 
             <section data-auto-animate>
                 <h2>Most basic C program</h2>
-                <div class="r-stretch"
-                    style="display: grid; grid-template-rows: auto auto; grid-template-columns: auto auto;">
+                <div style="display: grid; grid-template-rows: auto auto; grid-template-columns: auto auto;">
                     <div style="grid-row: 1 / 2; grid-column: 1 / 2;">
                         <pre>
                             <code data-fragment-index="1" data-trim data-noescape data-line-numbers="1|3-4,7|5-6|" class="c++">
@@ -76,6 +75,198 @@
                     </div>
                 </div>
             </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Compilers</h2>
+                <p>
+                    <ul>
+                        <li class="fragment">Raw C code cannot be executed in its native (high-level) syntax.</li>
+                        <li class="fragment">This code must be converted into a machine (low-level) code before it can be executed.</li>
+                        <li class="fragment">This conversion is done using compilers.</li>
+                        <li class="fragment">
+                            Common compilers:
+                            <ul>
+                                <li>gcc/g++ (GNU Compiler Collection)</li>
+                                <li>Clang</li>
+                                <li>nvcc (NVIDIA CUDA Compiler)</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">The default name of the executable file generated is <code>a.out</code>(assembler output).</li>
+                    </ul>
+                </p>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Executables</h2>
+                <p>
+                <ul>
+                    <li class="fragment">Once the C program has been compiled, it may then be executed (run the program). This whole process looks like:
+                        <pre><code data-trim data-noescape class="language-bash">
+                            gcc MyProgram.cpp options
+                            ./a.out
+                        </code></pre>
+                    </li>
+                    <li class="fragment">where the <code>./</code> syntax is the Unix/Linux command for executing a program in the current directory.</li>
+                    <li class="fragment">The <code>options</code> allows you to pass additional commands to the compiler. Example: you may need to include <code>-lm</code> when using certain math functions</li>
+                </ul>
+                </p>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Some Mathematics</h2>
+                <div style="display: grid; grid-template-rows: auto auto; grid-template-columns: auto;">
+                    <div style="grid-row: 1 / 2; grid-column: 1 / 2;">
+                        <pre><code data-fragment-index="1" data-trim data-noescape data-line-numbers="1-2|3-4,7|5-6|" class="c++"><script type="text/template">
+                            #include <header_file.h>
+
+                            type0 function(type1 in1, type2 in2)
+                            {
+                                // Your C code goes here;
+                                return value;
+                            }
+                        </script></code></pre>
+                    </div>
+                    <div style="grid-row: 2 / 3; grid-column: 1 / 2;">
+                        <pre data-id="code-animation"><code data-fragment-index="1" data-trim data-noescape data-line-numbers="1-3|4-5,10|6-9|" class="c++"><script type="text/template">
+                            #include <stdio.h>
+                            #include <math.h>
+                            
+                            int main ()
+                            {
+                                float x, y;
+                                x = 3.14; y = sin(x); // The = is an assignment, not equals
+                                printf("The sine of %f is %f. \n", x, y);
+                                return 0;
+                            }
+                        </script></code></pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Further uses of <code>math.h</code></h2>
+                <div>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <math.h>
+                        
+                        int main ()
+                        {
+                            float x = 3.14, y, z;
+                            y = sin(x); z = sqrt(x);
+                            printf("The sine of %f is %f. \n", x, y);
+                            printf("The sqrt of %f is %f. \n", x, z);
+                            printf("The square of %f is %f. \n", x, pow(x,2));
+                            printf("The log of %f is %f. \n", x, log(x));
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Good programmers use comments!</h2>
+                <div>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <math.h>
+                        /* 
+                        This is a comment block,
+                        which can span over multiple lines.
+                        */
+                        int main ()
+                        { // This is a single line comment, it ends with the line.
+                            float x, y;                                 // Comments can be placed
+                            x = 3.14; y = sin(x);                       // wherever you like.
+                            printf("The sine of %f is %f. \n", x, y);
+                            return 0;
+                        }
+                    </script></code></pre>
+                    <p style="text-align: left;">The compiler will ignore all the comments. Take advantage of these to communicate with yourself and colleagues.</p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Example of Good Comments</h2>
+                <div>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        /**
+                        * \file picoSensActuHAT_Driver.c
+                        * \author Vatsal Joshi
+                        * \date 28 May 2023
+                        * \version 0.1
+                        * \brief A driver to receive sensor data and send actuator commands to
+                        * an rp2040 based PI CM4 carrier board which is used as flight controller
+                        * and the PI CM4 is used as the main processing unit.
+                        */
+                        #include "picoSensActuHAT.h"
+
+                        // Module Information
+                        MODULE_LICENSE("GPL");
+                        MODULE_AUTHOR("Vatsal Joshi");
+                        MODULE_DESCRIPTION("Driver for picoSensActuHAT.");
+                        MODULE_VERSION("0.1");
+
+                        ///////////////////////////////////
+                        // Globals for char devices fops //
+                        ///////////////////////////////////
+                        /**
+                        * \brief Variables to hold character devices info. There will be four
+                        * char devices, 1. sensCnfg, 2. ActuCnfg, 3. sensData and 4. actuData.
+                        * The 'sensCnfg' device will contain the info received through control
+                        * transfers for NSENS and SENS_INFO vendor requests. Similarly,
+                        * 'actuCnfg' device will contain the info received through control
+                        * transfers for NACTU and ACTU_INFO vendor requests.
+                        */
+                        #define DEV_CLASS_NAME "sensActuHAT"
+                        #define DEV_REGION_NAME "picoSensActu"
+                        static dev_t hatDevNum;
+                        static dev_t sensCnfgDevNum, sensDataDevNum;
+                        static dev_t actuCnfgDevNum, actuDataDevNum;
+                        static struct class *sensActuClass;
+                        static struct cdev sensCnfg;
+                        static struct cdev sensData;
+                        static struct cdev actuCnfg;
+                        static struct cdev actuData;
+
+                        /**
+                        * \brief These are buffers for the four device files that will be
+                        * created.
+                        */
+                        static struct {
+                            uint8_t numSens;          // Number of sensors available onboard
+                            data_cfg_t sensList[128]; // Configuration for each sensor available
+                        } sensCnfgBuf;
+
+                        static struct
+                        {
+                            uint8_t numActu;          // Number of actuators available onboard
+                            data_cfg_t actuList[128]; // Configuration for each actuator available
+                        } actuCnfgBuf;
+
+                        // Buffers to hold sensor and actuator data
+                        static uint8_t sensDataBuf[1024], actuDataBuf[1024];
+
+                        // Offset for the sensor and actuator data in respective buffers
+                        static uint16_t sensDataOffset[128], actuDataOffset[128];
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
         </div>
     </div>
 
