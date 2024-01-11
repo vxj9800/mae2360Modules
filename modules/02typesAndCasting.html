@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Data Types and Cast Operators</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate>
+                <h2>Data Types and Cast Operators</h2>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Data Types</h2>
+                <table style="font-size: x-large;">
+                    <tr>
+                        <th>Type</th>
+                        <th>Content</th>
+                        <th><a href="https://cplusplus.com/reference/cstdio/printf/" target="_blank" rel="noopener noreferrer">Format Specifier</a></th>
+                        <th>Range</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><code>int</code></td>
+                        <td>Integer</td>
+                        <td><code>%d</code></td>
+                        <td>-2147483648 to 2147483647</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><code>float</code></td>
+                        <td>Floating-Point</td>
+                        <td><code>%f</code></td>
+                        <td>&pm;1.2e-38 to &pm;3.4e+38</td>
+                        <td>3.14159274</td>
+                    </tr>
+                    <tr>
+                        <td><code>double</code></td>
+                        <td>Higher-precision floating-Point</td>
+                        <td><code>%lf</code></td>
+                        <td>&pm;2.3e-308 to &pm;1.7e+308</td>
+                        <td>3.1415926535897931</td>
+                    </tr>
+                    <tr>
+                        <td><code>char</code></td>
+                        <td>Character</td>
+                        <td><code>%c</code></td>
+                        <td><a href="https://www.asciitable.com/" target="_blank" rel="noopener noreferrer">ASCII code</a></td>
+                        <td>'c'</td>
+                    </tr>
+                </table>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Data Types</h2>
+                <p>
+                <ul>
+                    <li class="fragment"><code>int</code> - The range of integer actually depends on the hardware and compiler. The -2,147,483,648 to 2,147,483,647 range is standard.</li>
+                    <li class="fragment"><code>float</code> - These take care of most non-scientific computations.</li>
+                    <li class="fragment"><code>double</code> - An extension of <code>float</code>, these are more appropriate for engineering and scientific applications when additional precision is needed.</li>
+                    <li class="fragment"><code>char</code> - represents a single ASCII character. These must be enclosed by a single quotation mark (<code>'</code>).</li>
+                </ul>
+                </p>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Cast Operators</h2>
+                <p style="text-align: left;">
+                    Casts are operators that act on variables of differing types that cause the output to be the type of the 'higher' variable according to the order:
+                    <span style="display: block; text-align: center; margin: 10px;"><code>int</code> \(=\) <code>char</code> \(<\) <code>float</code> \(<\) <code>double</code></span>
+                    Example:
+                    <pre><code data-fragment-index="1" data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        int a; float b, c;
+                        c = a * b;
+                    </script></code></pre>
+                </p>
+                <p style="text-align: left;">
+                    The variable <code>a</code> is automatically converted to <code>float</code> and the output <code>c</code> is a <code>float</code>.
+                </p>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Example 1</h2>
+                <div>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        
+                        int main()
+                        {
+                            int a, b;
+                            a = 3; b = 5;
+                            printf("%f \n", a/b);
+                            return 0;
+                        }
+                    </script></code></pre>
+                    <br>
+                    <p style="text-align: left;">What will be the output when this code is executed?</p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Example 2</h2>
+                <div>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        
+                        int main()
+                        {
+                            int a, b;
+                            a = 3; b = 5;
+                            printf("%f \n", (float)a/b);
+                            return 0;
+                        }
+                    </script></code></pre>
+                    <br>
+                    <p style="text-align: left;">The <code>(float)</code> is one form of a cast operator that converts the <code>int</code> type value of <code>a</code> to a <code>float</code> type.</p>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2>Example 3</h2>
+                <div>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        
+                        int main()
+                        {
+                            char grade = 'A';
+                            printf("What grade are we all going to earn? \n Why an %c of course! \n", grade);
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>

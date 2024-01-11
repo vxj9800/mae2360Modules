@@ -137,7 +137,7 @@
                             #include <stdio.h>
                             #include <math.h>
                             
-                            int main ()
+                            int main()
                             {
                                 float x, y;
                                 x = 3.14; y = sin(x); // The = is an assignment, not equals
@@ -158,7 +158,7 @@
                         #include <stdio.h>
                         #include <math.h>
                         
-                        int main ()
+                        int main()
                         {
                             float x = 3.14, y, z;
                             y = sin(x); z = sqrt(x);
@@ -184,7 +184,7 @@
                         This is a comment block,
                         which can span over multiple lines.
                         */
-                        int main ()
+                        int main()
                         { // This is a single line comment, it ends with the line.
                             float x, y;                                 // Comments can be placed
                             x = 3.14; y = sin(x);                       // wherever you like.
@@ -274,6 +274,7 @@
     <script src="../reveal.js/plugin/notes/notes.js"></script>
     <script src="../reveal.js/plugin/markdown/markdown.js"></script>
     <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
     <script>
         // More info about initialization & config:
         // - https://revealjs.com/initialization/
@@ -282,7 +283,7 @@
             hash: true,
 
             // Learn about plugins: https://revealjs.com/plugins/
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
         });
     </script>
 </body>
