@@ -37,7 +37,7 @@ section.has-light-background h6 {
     --r-heading2-size: 1.6em;
     --r-heading3-size: 1.3em;
     --r-heading4-size: 1em;
-    --r-code-font: 'Courier New', Courier, monospace;
+    --r-code-font: monospace, 'Courier New', Courier;
     --r-link-color: #42affa;
     --r-link-color-dark: #068de9;
     --r-link-color-hover: #8dcffc;
@@ -184,6 +184,10 @@ section.has-light-background h6 {
     margin-left: 40px;
 }
 
+.reveal li+li {
+    margin-top: 10px;
+}
+
 .reveal dt {
     font-weight: bold;
 }
@@ -218,7 +222,7 @@ section.has-light-background h6 {
     width: 90%;
     margin: var(--r-block-margin) auto;
     text-align: left;
-    font-size: 0.55em;
+    font-size: 0.60em;
     font-family: var(--r-code-font);
     line-height: 1.2em;
     word-wrap: break-word;
