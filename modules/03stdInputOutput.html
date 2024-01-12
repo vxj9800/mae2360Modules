@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Standard Input/Output</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate>
+                <h2>Standard Input/Output</h2>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Output to Screen</h2>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The <code>printf</code> function (Print with Format) is a standard function for outputting data to the console
+                        (monitor). The syntax is
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        printf("format", argument);
+                    </script></code></pre>
+                    </p>
+                    <p style="text-align: left;">and is defined in the <code>stdio.h</code> header file.
+                    </p>
+                </div><br>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        Examples:
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        printf("Hello, World!\n");
+                        printf("Two integers are %d and %d.\n", a, b);
+                        printf("Two floating numbers are %f and %f.\n", a, b);
+                        printf("An integer (%d), a float (%f), and a double (%lf) walk into a bar...", a, b, c);
+                    </script></code></pre>
+                    </p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Inputs from User</h2>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The <code>scanf</code> function (Scan with Format) is the inverse of <code>printf</code>. This function scans the values received from the keyboard and assigns them to variables. This function is also defined in the the <code>stdio.h</code> header file.
+                    </p>
+                </div>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        Example:
+                    <pre data-id="code-animation-c"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        
+                        int main()
+                        {
+                            int a, b;
+                            printf("Enter two integers separated by a comma: ");
+                            scanf("%d,%d", &a, &b);
+                            printf("a = %d, b = %d", a, b);
+                        }
+                    </script></code></pre>
+                    </p>
+                </div>
+                <div>
+                    <p style="text-align: left;"><span class="fragment">Why the <code>&</code>? </span><span class="fragment">Pointers and Addresses.</span></p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Another <code>scanf</code> Example</h2>
+                <div>
+                    <pre data-id="code-animation-c"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        
+                        int main()
+                        {
+                            int a, b;
+                            printf("Enter two integers separated by a space: ");
+                            scanf("%d %d", &a, &b);
+                            printf("a = %d, b = %d", a, b);
+                        }
+                    </script></code></pre>
+                </div><br>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        Notice that in the previous example, a comma was included in the <code>scanf</code> function thus requiring a comma be included in the input. In this example, a space is used in the code so only a space is required in the input.
+                    </p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Other Ways of Printing to Screen</h2>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The header file <code>iostream</code> (not <code>iostream.h</code>) contains the definitions necessary to use streams.
+                    </p>
+                </div>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The command <code>cout</code> will also send an output to the monitor, but with distinct syntax.
+                    </p>
+                </div><br>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        Example:
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <iostream>
+                        
+                        int main()
+                        {
+                            std::cout << "I have a new pet. It is a kitten \n" << "His mass is " << 380.0 << " grams.";
+                        }
+                    </script></code></pre>
+                    </p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Using <code>cin</code> Stream</h2>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The header file <code>iostream</code> also contains the definitions for the input command <code>cin</code>.
+                    </p>
+                </div>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        Example:
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <iostream>
+                        using namespace std;
+                        
+                        int main()
+                        {
+                            int i;
+                            cout << "Please enter an integer value: ";
+                            cin >> i;
+                            cout << "The value you entered is " << i;
+                            cout << " and its double is " << i * 2 << ".\n";
+                            return 0;
+                        }
+                    </script></code></pre>
+                    </p>
+                </div>
+                <div class="fragment">
+                    <p style="text-align: left;">Note the lack of <code>&</code> on the <code>cin</code> command compared to <code>scanf</code>.</p>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>A Note on Using Streams</h2>
+                <p class="fragment" style="text-align: left;">The header file <code>iostream</code> allows for the use of <code>cout</code> and <code>cin</code> (among others).</p>
+                <p class="fragment" style="text-align: left;">While in C the standard for input/output is <code>printf</code> and <code>scanf</code>, in C++ the standard for input/output is often <code>cout</code> and <code>cin</code>.</p>
+                <p class="fragment" style="text-align: left;">The <code>cout</code> and <code>cin</code> commands are not compatible with C code, they are exclusive to C++.</p>
+                <p class="fragment" style="text-align: left;">What this means to first time programmers: You need to use the <code>g++</code> compiler instead of <code>gcc</code>!</p>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2>Input/Output in MATLAB</h2>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The MATLAB function for printing to the screen has similar syntax to C:
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        fprintf('Hello World!\n');
+                        fprintf('Here''s a number: %d\n', 17);
+                    </script></code></pre>
+                    </p>
+                </div><br>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        The MATLAB function for accepting an input has following syntax:
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        variable = input('string printed to output'); % for numbers
+                        variable = input('string printed to output', 's'); % for strings
+                    </script></code></pre>
+                    </p>
+                </div><br>
+                <div class="fragment">
+                    <p style="text-align: left;">
+                        Example:
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        x = input('Input a value for x:\n');
+                    </script></code></pre>
+                    </p>
+                </div>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
