@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Operators and Control Statements</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section>
+                <h2>Operators and Control Statements</h2>
+            </section>
+
+
+
+            <section>
+                <h2>Relational Operators</h2>
+                <div>
+                    <p style="text-align: left;">
+                        Relational operators are used in logical claims to evaluate conditions. These statements evaluate to either <code>true</code>/<code>1</code> or <code>false</code>/<code>0</code>.
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Syntax</th>
+                                <th>Result <code>true</code> if</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>a &lt; b</code></td>
+                                <td><code>a</code> is less than <code>b</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>a &lt;= b</code></td>
+                                <td><code>a</code> is less than or equal to <code>b</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>a &gt; b</code></td>
+                                <td><code>a</code> is greater than <code>b</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>a &gt;= b</code></td>
+                                <td><code>a</code> is greater than or equal to <code>b</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>a == b</code></td>
+                                <td><code>a</code> is exactly equal to <code>b</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>a != b</code> (<code>a ~= b</code>)</td>
+                                <td><code>a</code> is not equal to <code>b</code> (Matlab)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2>Logical Operators</h2>
+                <div>
+                    <p style="text-align: left;">
+                        Logical operators are used to evaluate multiple conditions.
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Syntax</th>
+                                <th>Result <code>true</code> if</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>a && b</code></td>
+                                <td><code>a</code> and <code>b</code> both are <code>true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>a || b</code></td>
+                                <td><code>a</code> or <code>b</code> is <code>true</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>!a</code> (<code>~a</code>)</td>
+                                <td><code>a</code> is not <code>true</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="text-align: left;">
+                        The <code>!</code> operator can be combined with more than just <code>=</code>.<br>
+                        Example: <code>!&lt;</code> means not less than.
+                    </p>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2>Increment/Decrement/Assignment Operators</h2>
+                <div style="text-align: left;">
+                    The C language has a long history of minimalism. Many of these commands can be accomplished by other means, but these commands are designed to make your code compact.
+                    <div class="r-stack">
+                        <table class="fragment fade-in-then-out">
+                            <thead>
+                                <tr>
+                                    <th>Syntax</th>
+                                    <th>Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>a++</code>, <code>++a</code></td>
+                                    <td>Value of <code>a</code> is incremented by 1. Same as <code>a = a + 1;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>a--</code>, <code>--a</code></td>
+                                    <td>Value of <code>a</code> is decremented by 1. Same as <code>a = a - 1;</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="fragment fade-in-then-out">
+                            <thead>
+                                <tr>
+                                    <th>Syntax</th>
+                                    <th>Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>b = a</code></td>
+                                    <td>Value of <code>a</code> is assigned to <code>b</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b = ++a</code></td>
+                                    <td>Value of <code>a</code> is incremented by 1 and then assigned to <code>b</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b = a++</code></td>
+                                    <td>Value of <code>a</code> is assigned to <code>b</code> and then incremented by 1</td>
+                                </tr>
+                                <tr>
+                                    <td><code>b = --a</code></td>
+                                    <td>Value of <code>a</code> is decremented by 1 and then assigned to <code>b</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b = a--</code></td>
+                                    <td>Value of <code>a</code> is assigned to <code>b</code> and then decremented by 1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="fragment fade-in">
+                            <thead>
+                                <tr>
+                                    <th>Syntax</th>
+                                    <th>Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>b = a</code></td>
+                                    <td>Value of <code>a</code> is assigned to <code>b</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b += a</code></td>
+                                    <td>Value of <code>b + a</code> is assigned to <code>b</code>. Same as <code>b = b + a;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b -= a</code></td>
+                                    <td>Value of <code>b - a</code> is assigned to <code>b</code>. Same as <code>b = b - a;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b *= a</code></td>
+                                    <td>Value of <code>b * a</code> is assigned to <code>b</code>. Same as <code>b = b * a;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b /= a</code></td>
+                                    <td>Value of <code>b / a</code> is assigned to <code>b</code>. Same as <code>b = b / a;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>b %= a</code></td>
+                                    <td>Value of <code>b % a</code> is assigned to <code>b</code>. Same as <code>b = b % a;</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+
+            <section>
+                <h2>Control statements</h2>
+                <div style="display: grid; grid-template-rows: auto auto;">
+                    <p style="text-align: left; grid-row: 1 / 2;">
+                        All of these tools are often used with control statements to form logical operations. The common control statements
+                        are:
+                    </p>
+                    <ul class="fragment" style="display: inline; grid-row: 2 / 3;">
+                        <li><code>if / else if</code></li>
+                        <li><code>for</code></li>
+                        <li><code>while</code></li>
+                        <li><code>do while</code></li>
+                        <li><code>switch</code></li>
+                    </ul>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2><code>if / else if</code> Statement</h2>
+                <div style="display: grid; grid-template-rows: auto auto auto; text-align: left;">
+                    <p style="text-align: left; grid-row: 1 / 2;">
+                        A block is a set of code contained within <code>{...}</code>. That block can be triggered when the conditions within an <code>if</code> statement are satisfied.
+                    </p>
+                    <p class="fragment" style="text-align: left; grid-row: 2 / 3;">
+                        The <code>else</code> statement allows triggering another block of code
+                        when the conditions within an <code>if</code> statement are not satisfied.
+                    </p>
+                    <div class="fragment" style="grid-row: 3 / 4; text-align: left;">
+                        Example:
+                        <div class="r-stack">
+                            <pre class="fragment fade-in-then-out"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                                if (condition_1)
+                                {
+                                    // This code will execute if condition_1 is met.
+                                }
+                                else
+                                {
+                                    // This code will execute if condition_1 fails
+                                }
+                            </script></code></pre>
+                            <pre class="fragment fade-in"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                                if (condition_1)
+                                {
+                                    // Code.
+                                }
+                                else if (condition_2)
+                                {
+                                    // More Code.
+                                }
+                                else
+                                {
+                                    // Even More Code.
+                                }
+                            </script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2><code>if / else if</code> Example in C</h2>
+                <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    int main()
+                    {
+                        int input;
+                        printf("Enter an integer: ");
+                        scanf("%d", &input);
+                        if (input > 1 && input < 100)
+                            printf("The input is between 1 and 100\n");
+                        else
+                            printf("The input is not within that range\n");
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2><code>if / else if</code> Example in MATLAB</h2>
+                <p style="text-align: left;">
+                    The MATLAB <code>if / elseif</code> syntax is similar to C. Note that the <code>else if</code> used in C is replaced with <code>elseif</code>. Also note that an <code>end</code> command must be entered to identify when that logical block ends.
+                </p>
+                <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                    prompt = 'Enter an integer: ';
+                    x = input(prompt);
+                    if x > 1 && x < 100
+                        fprintf('The input is between 1 and 100\n');
+                    elseif x == 1 || x == 100
+                        fprintf('You entered a range boundary\n');
+                    else
+                        fprintf('The input is not within that range\n');
+                    end
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2><code>for</code> Statement</h2>
+                <div style="display: grid; grid-template-rows: auto auto;">
+                    <div style="grid-row: 1 / 2; text-align: left;">
+                        The <code>for</code> command creates an iteration loop when the number of iterations is (usually) known in advance. The syntax is:
+                        <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                            for (initiation value; condition; action)
+                            {
+                                // Code.
+                            }
+                        </script></code></pre>
+                    </div>
+                    <div class="fragment" style="grid-row: 2 / 3; text-align: left;">
+                        Example:
+                        <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                            int sum = 0, cycles=100;
+                            for (int i = 0; i < cycles; ++i)
+                                sum += i;
+                        </script></code></pre>
+                        Note that <code>{...}</code> are not needed as there is only one line of code in the <code>for</code> loop.
+                    </div>
+                </div>
+            </section>
+            
+            
+            
+            <section>
+                <h2><code>for</code> Example in C</h2>
+                <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    int main()
+                    {
+                        int cycles;
+                        printf("How many iterations? : ");
+                        scanf("%d", &cycles);
+                        for (int i = 0; int < cycles; ++i)
+                            printf("cycle: %d\n", i);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+            
+            
+            
+            <section>
+                <h2><code>for</code> Example in MATLAB</h2>
+                <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                    output = 0;
+                    cycles = input('How many cycles?');
+                    for i = 1:1:cycles
+                        output = output + i;
+                        fprintf('cycle: %d\n', i);
+                        fprintf('The current output is: %d\n', output);
+                    end
+                </script></code></pre>
+                <p style="text-align: left;">
+                    Note that <code>end</code> replaces the use of <code>{...}</code>.
+                </p>
+            </section>
+
+
+
+            <section>
+                <h2><code>while</code> Statement</h2>
+                <div style="display: grid; grid-template-rows: auto auto;">
+                    <div style="grid-row: 1 / 2; text-align: left;">
+                        The <code>while</code> command creates an iteration loop that is executed as long as a logical condition is evaluated as TRUE. The syntax is:
+                        <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                            while (condition)
+                            {
+                                // Code.
+                            }
+                        </script></code></pre>
+                    </div>
+                    <div class="fragment" style="grid-row: 2 / 3; text-align: left;">
+                        Example:
+                        <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                            #include <stdio.h>
+            
+                            int main()
+                            {
+                                int i = 0;
+                                while (i < 10)
+                                {
+                                    i++;
+                                    printf("The current value of i is:\t%d", i);
+                                }
+                                return 0;
+                            }
+                        </script></code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            
+            
+            <section>
+                <h2><code>while</code> Example in MATLAB</h2>
+                <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                    i = 0;
+                    while i < 10
+                        i = i + 1;
+                        fprintf('The current value of i is: %d\n', i);
+                    end
+                </script></code></pre>
+                <p style="text-align: left;">
+                    In this case, the <code>end</code> command marks the end of the <code>while</code> loop.
+                </p>
+            </section>
+
+
+
+            <section>
+                <h2><code>do while</code> Statement</h2>
+                <div class="r-stretch" style="display: grid; grid-template-rows: auto auto;">
+                    <div style="grid-row: 1 / 2; text-align: left;">
+                        The <code>do while</code> command creates an iteration loop where the condition is evaluated after the code is executed. This ensures that the code is executed at least once. The syntax is:
+                        <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                                        do
+                                        {
+                                            // Code.
+                                        } while (condition);
+                                    </script></code></pre>
+                    </div>
+                    <div class="fragment" style="grid-row: 2 / 3; text-align: left;">
+                        Example:
+                        <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                            #include <stdio.h>
+            
+                            int main()
+                            {
+                                int input;
+                                do
+                                {
+                                    printf("Enter 1 for yes, 0 for no: ");
+                                    scanf("%d", &input);
+                                } while (input != 1 && input != 0);
+                                return 0;
+                            }
+                        </script></code></pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2><code>switch</code> Statement</h2>
+                <div style="text-align: left;">
+                    The <code>switch</code> command allows code to branch along multiple pathways given the value of an input. This result can be accomplished with multiple if statements, but the switch simplifies the process. The syntax is:
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        switch (variable)
+                        {
+                        case n:
+                            // code for case n
+                            break;
+                        case n+1:
+                            // code for case n+1
+                            break;
+                        ...
+                        default:
+                            // code when no case value match
+                            break;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2><code>switch</code> Example in C</h2>
+                <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    int main()
+                    {
+                        int input;
+                        printf("Enter an integer: ");
+                        scanf("%d", &input);
+                        switch(input)
+                        {
+                        case 1:
+                            printf("You entered a 1\n");
+                            break;
+                        case 2:
+                            printf("You entered a 2\n");
+                            break;
+                        default:
+                            printf("You entered neither a 1 or a 2\n");
+                            break;
+                        }
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+            
+            
+            
+            <section>
+                <h2><code>switch</code> Example in MATLAB</h2>
+                <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                    x = input('Enter an integer: ');
+                    switch n
+                        case 1
+                            disp('You entered a 1\n')
+                        case 2
+                            disp('You entered a 2\n')
+                        otherwise
+                            disp('You entered neither a 1 or a 2\n')
+                    end
+                </script></code></pre>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
