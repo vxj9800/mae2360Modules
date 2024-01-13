@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Functions</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Recursion</h2>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Recursion</h2>
+                <span style="grid-column: 1 / -1;">
+                    Recursion refers to a function calling itself. A function defined recursively allows for highly compact and efficient code. It can however be difficult to debug and requires some if/else statement to prevent infinite recursion.
+                </span>
+            </section>
+
+
+
+            <section data-auto-animate-restart data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Recursion Example 1</h2>
+                <pre data-id="recursionEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    int sumOfIntegers(int n)
+                    {
+                        if (n == 0)
+                            return 0;
+                        return n + sumOfIntegers(n - 1);
+                    }
+
+                    int main()
+                    {
+                        int i;
+                        printf("Enter the number of cycles: ");
+                        scanf("%d", &i);
+                        printf("The sum of all integers between 1 and %d is: %d\n", i, sumOfIntegers(i));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Recursion Example 2</h2>
+                <pre data-id="recursionEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    int fibo(int n)
+                    {
+                        if (n == 1)
+                            return 1;
+                        if (n == 2)
+                            return 2;
+                        return fibo(n - 1) + fibo(n - 2);
+                    }
+
+                    int main()
+                    {
+                        int i;
+                        printf("Enter the number of cycles: ");
+                        scanf("%d", &i);
+                        printf("The %d number in the Fibonacci sequence is: %d\n", i, fibo(i));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
