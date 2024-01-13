@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Functions</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section>
+                <h2>Functions</h2>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Function Definitions</h2>
+                <span style="grid-column: 1 / -1;">We have already seen the function <code>main()</code> included in all scripts. The syntax for other functions is the same:</span>
+                <pre style="grid-column: 1 / -1;" class="fragment"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    type FunctionName(inputs)
+                    {
+                        code;
+                        return var_of_type;
+                    }
+                </script></code></pre>
+                <span class="fragment" style="grid-column: 1 / -1;">If there is nothing to return, then type <code>void</code> is used.</span><br>
+                <span class="fragment" style="grid-column: 1 / -1;">As the code is read from top to bottom, functions called by <code>main()</code> must be defined before <code>main()</code>.</span>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;"><code>void</code> Example</h2>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    void hello()
+                    {
+                        printf("Hello, World!\n");
+                    }
+
+                    int main()
+                    {
+                        hello();
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;"><code>double</code> Return Example</h2>
+                <pre data-id="doubleRetEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    double square(double IN)
+                    {
+                        double OUT = IN*IN;
+                        return OUT;
+                    }
+
+                    int main()
+                    {
+                        double IN, OUT;
+                        printf("Input a number in need of squaring: ");
+                        scanf("%lf", &IN);
+                        OUT = square(IN);
+                        printf("The square of the input is: %lf \n", OUT);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Compact <code>double</code> Return Example</h2>
+                <pre data-id="doubleRetEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    double square(double IN)
+                    {
+                        return IN*IN;
+                    }
+
+                    int main()
+                    {
+                        double IN;
+                        printf("Input a number in need of squaring: ");
+                        scanf("%lf", &IN);
+                        printf("The square of the input is: %lf \n", square(IN));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Exponential Function Example</h2>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    #include <math.h>
+
+                    double methodOne(double IN1, double IN2)
+                    {
+                        return exp(IN2*log(IN1));
+                    }
+
+                    double methodTwo(double IN1, double IN2)
+                    {
+                        return pow(IN1, IN2);
+                    }
+
+                    int main()
+                    {
+                        double x = 3, y = 7;
+                        printf("The first method of calculating 3^7 yields: %lf\n", methodOne(x, y));
+                        printf("The second method of calculating 3^7 yields: %lf\n", methodTwo(x, y));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Scope of Variables within Functions</h2>
+                <p style="grid-column: 1 / -1;">
+                    Variables used within a function are local and therefore do not retain changes outside that function. Consider the code:
+                </p>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    void ChangeAndPrint(double b)
+                    {
+                        b = 10;
+                        printf("Value of b in the function is: %lf\n", b);
+                    }
+
+                    int main()
+                    {
+                        double b = 5;
+                        ChangeAndPrint(b);
+                        printf("Value of b in main is: %lf\n", b);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;"><code>function</code> in MATLAB</h2>
+                <span style="grid-column: 1 / -1;">Unlike in C, only the first function in a MATLAB script will automatically execute. The main function then needs to be at the top.
+                </span>
+                <pre class="fragment" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                    function main
+                        IN = input('Enter a number in need of squaring: ');
+                        fprintf('The square of the input is: %f\n', square(IN));
+                    end
+
+                    function OUT = square(IN)
+                        OUT = IN*IN;
+                    end
+                </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Exiting an Infinite Loop</h2>
+                <span style="grid-column: 1 / -1;">Consider the following <code>for</code> loop. When will this code ever terminate?</span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main()
+                    {
+                        int i;
+                        for (i = 1; i > 0; ++i)
+                            printf("loop");
+                        return 0;
+                    }
+                </script></code></pre>
+                <span class="fragment" style="grid-column: 1 / -1;">To exit from the infinite loop, enter <kbd>ctrl</kbd> + <kbd>C</kbd>.</span>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Output Formatting</h2>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    #include <math.h>
+
+                    int main()
+                    {
+                        double PI = acos(-1);
+                        printf("%lf\n",PI);
+                        printf("%10lf\n",PI);
+                        printf("%20lf\n",PI);
+                        printf("%30lf\n",PI);
+                        printf("%10.3lf\n",PI);
+                        printf("%10.4lf\n",PI);
+                        printf("%10.5lf\n",PI);
+                        printf("%10.6lf\n",PI);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Specifying Output File Name</h2>
+                <span style="grid-column: 1 / -1;">For a C code, you can specify the name of the output file generated by <code>gcc</code>/<code>g++</code>:</span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="bash"><script type="text/template">
+                    g++ MyProgram.cpp -o MyProgram
+                    ./MyProgram
+                </script></code></pre>
+                <span style="grid-column: 1 / -1;">The <code>-o</code> is a command line option for specifying the output name.</span>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Defining Symbolic Constant</h2>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    #include <math.h>
+                    #define PI acos(-1)
+
+                    int main()
+                    {
+                        double r;
+                        printf("Enter radius = ");
+                        scanf("%lf", r);
+                        printf("The area of the circle is = %lf", r*r*PI);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
