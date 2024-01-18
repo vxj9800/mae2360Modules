@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Arrays</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Arrays</h2>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Arrays in C</h2>
+                <span style="grid-column: 1 / -1;">
+                    Arrays are similar to all the other types we have discussed (<code>int</code>, <code>float</code>, <code>double</code>) except that they store multiple values. An array of <code>char</code> is called a <code>string</code>. Arrays can be used to perform the linear algebra of vectors and matrices. They may also be multidimensional beyond two indices.
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>The simplest syntax for creating an array is:</span>
+                    <pre data-id="arrayEx"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+    
+                        int main()
+                        {
+                            int a[3];
+                            a[0] = 1; a[1] = 2; a[2] = 5;
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Initializing an Array</h2>
+                <div style="grid-column: 1 / -1;">
+                    <span>Arrays may also have values assigned when the array is created:</span>
+                    <pre data-id="arrayEx"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+    
+                        int main()
+                        {
+                            int a[3] = {1, 2, 5};
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>or</span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+    
+                        int main()
+                        {
+                            int a[] = {1, 2, 5};
+                            return 0;
+                        }
+                    </script></code></pre>
+                    <span>Note that the size of the array can be inferred from the assignment.</span>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate data-auto-animate-restart style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Nested Arrays (Multidimensional)</h2>
+                <span style="grid-column: 1 / -1;">Nested arrays allow for matrices (or higher dimensional arrays) to store data using multiple indices:</span>
+                <pre data-id="nestedEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+ 
+                    int main()
+                    {
+                        int a[2][3];
+                        a[0][0] = 1; a[0][1] = 2; a[0][2] = 5;
+                        a[1][0] = 11; a[1][1] = 12; a[1][2] = 15;
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Initializing a Nested Array</h2>
+                <span style="grid-column: 1 / -1;">Values may also be assigned during the initialization:</span>
+                <pre data-id="nestedEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+ 
+                    int main()
+                    {
+                        int a[2][3] = {{1, 2, 5}, {11, 12, 15}};
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Limitations of Arrays in C</h2>
+                <span style="grid-column: 1 / -1;">Note that in all the previous examples, the size of the array was specified (in some way) during compiling. What if the size of the array must be specified by the user?</span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    int main()
+                    {
+                        int j;
+                        printf("Enter the desired size of the array: ");
+                        scanf("%d", &j);
+                        int a[j];
+                        a[0]=1; a[1]=2; a[2]=5;
+                        return 0;
+                    }
+                </script></code></pre>
+                <span class="fragment" style="grid-column: 1 / -1;">The limitation on a variable size array is that it cannot be initialized. Also, what happens in the above code if a 2 is input?</span>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Linear Algebra Operations</h2>
+                <span style="grid-column: 1 / -1;">Standard C arrays <span style="color: brown;">will not</span> automatically perform linear algebra operations like matrix addition and multiplication.</span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>The following code <span style="color: brown;">is not</span> performing vector addition:</span>
+                    <pre data-id="linAlgEx"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+    
+                        int main()
+                        {
+                            int A[3], B[3], C[3];
+                            A[0] = 1; A[1] = 2; A[2] = 5;
+                            B[0] = 11; B[1] = 12; B[2] = 15;
+                            C = A + B;
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Linear Algebra Operations</h2>
+                <span style="grid-column: 1 / -1;">Following code however <span style="color: darkgreen;">does</span> perform vector addition:</span>
+                    <pre data-id="linAlgEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+    
+                        int main()
+                        {
+                            int A[3], B[3], C[3];
+                            A[0] = 1; A[1] = 2; A[2] = 5;
+                            B[0] = 11; B[1] = 12; B[2] = 15;
+                            for (int j = 0; j < 3; j++)
+                                C[j] = A[j] + B[j];
+                            printf("The values in array C are: ");
+                            printf("%d \t %d \t %d \n", C[0], C[1], C[2]);
+                            return 0;
+                        }
+                    </script></code></pre>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Useful Libraries for Linear Algebra</h2>
+                <span style="grid-column: 1 / -1;">There are some libraries that are highly useful for facilitating linear algebra.</span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>For example, the Standard Template Library <code>vector</code>, in C++, contains descriptions for vector objects:</span>
+                    <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <vector>
+    
+                        int main()
+                        {
+                            std::vector<int> a;
+                            a.resize(3);
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+                <span class="fragment" style="grid-column: 1 / -1;">There exist other third-party libraries like <a href="https://eigen.tuxfamily.org/"  target="_blank" rel="noopener noreferrer">Eigen</a>, <a href="https://www.gnu.org/software/gsl/" target="_blank" rel="noopener noreferrer">GSL</a>, <a href="https://arma.sourceforge.net/" target="_blank" rel="noopener noreferrer">Armadillo</a>, etc. which are designed to perform linear algebra and other mathematical operations.</span>
+                <span class="fragment" style="grid-column: 1 / -1;">Unless explicitly stated in assignment directions, these libraries <span style="color: brown;">are not</span> to be used in this course.</span>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Arrays in MATLAB</h2>
+                <div style="grid-column: 1 / -1;">
+                    <span>Generating an array in MATLAB is as simple as providing indices. Following command will create a row vector a with a <code>3</code> in the 10th entry and all zeros otherwise:</span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        a(10) = 3;
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>Following are other ways of creating two-dimensional arrays:</span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        b(2,3) = 3; % Create a (2 x 3) matrix with a 3 in the second row, third column
+                        c = zeros(4,5); % Create a (4 x 5) matrix with all zeros
+                        d = ones(6,8); % Create a (6 x 8) matrix with all ones
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>Parentheses are used to then reference an individual entry:</span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        a(2) = 5;
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Linear Algebra in MATLAB</h2>
+                <span style="grid-column: 1 / -1;">Unlike C, MATLAB will automatically perform linear algebra:</span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                    a = randn(3,1);
+                    b = randn(3,1);
+
+                    c = a + b;
+                    d = a' * b;
+                    e = a * b';
+                    f = dot(a,b);
+                    g = cross(a,b);
+                </script></code></pre>
+                <span class="fragment" style="grid-column: 1 / -1;">What will be the dimensions of the outputs?</span>
+            </section>
+
+
+
+            <section style="display: grid;">
+                <h2 style="grid-column: 1 / -1;">Cell Arrays in MATLAB</h2>
+                <span style="grid-column: 1 / -1;">Arrays in Matlab can also be used to store data of different types.</span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>Consider the following and notice the change in syntax:</span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        A{1} = 10;
+                        A{2} = 'Here's a string';
+                        A{3} = randn(3,3);
+                    </script></code></pre>
+                </div>
+                <span class="fragment" style="grid-column: 1 / -1;">These are called cell arrays and are highly flexible.</span>
+                <span class="fragment" style="grid-column: 1 / -1;">What would happen if you then entered <code>A</code> into the command window?</span>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
