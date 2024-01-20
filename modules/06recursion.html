@@ -21,13 +21,13 @@
 
 
 
-            <section data-auto-animate style="display: grid;">
+            <section data-auto-animate>
                 <h2 style="grid-column: 1 / -1;">Recursion</h2>
             </section>
 
 
 
-            <section data-auto-animate style="display: grid;">
+            <section data-auto-animate>
                 <h2 style="grid-column: 1 / -1;">Recursion</h2>
                 <span style="grid-column: 1 / -1;">
                     Recursion refers to a function calling itself. A function defined recursively allows for highly compact and efficient code. It can however be difficult to debug and requires some if/else statement to prevent infinite recursion.
@@ -36,7 +36,7 @@
 
 
 
-            <section data-auto-animate-restart data-auto-animate style="display: grid;">
+            <section data-auto-animate-restart data-auto-animate>
                 <h2 style="grid-column: 1 / -1;">Recursion Example 1</h2>
                 <pre data-id="recursionEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
                     #include <stdio.h>
@@ -61,7 +61,7 @@
 
 
 
-            <section data-auto-animate style="display: grid;">
+            <section data-auto-animate>
                 <h2 style="grid-column: 1 / -1;">Recursion Example 2</h2>
                 <pre data-id="recursionEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
                     #include <stdio.h>
@@ -103,6 +103,7 @@
         Reveal.initialize({
             hash: true,
             slideNumber: true,
+            display: 'grid',
 
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
