@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Strings</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Strings</h2>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Strings</h2>
+                <p style="grid-column: 1 / -1;">
+                    A string refers to a series of individual characters (<code>char</code>s). In C, an array is used to store these characters. As previously discussed, all arrays are actually pointers. Thus, strings are also pointers.
+                </p>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Here is the syntax:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        char stringname[] = "Contents of the string";
+                    </script></code></pre>
+                    <span>
+                        Or
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        char stringname[]={'C','o','n','t','e','n','t','s','\0'};
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Length of a String Array</h2>
+                <span style="grid-column: 1 / -1;">
+                    The length of the string arrays is actually 1 longer than you would normally expect.
+                </span>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Consider the following code:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        
+                        int main()
+                        {
+                            double a[X] = {1,2,3}
+                            char b[Y] = "Anyeong";
+                            printf("Last element of a: %lf\n", a[X]);
+                            printf("Last element of b: %c\n", b[Y]);
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+                <span class="fragment" style="grid-column: 1 / -1;">
+                    Recall that since <code>a</code> and <code>b</code> are being initialized, <code>X</code> and <code>Y</code> are not explicitly needed. What are the minimum values of <code>X</code> and <code>Y</code> that will allow the code to compile without any warning?
+                </span>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Strings and Pointers</h2>
+                <span style="grid-column: 1 / -1;">
+                    To see that strings are in fact pointers, consider that they may be assigned to pointers:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main()
+                    {
+                        double *pa;
+                        char *pb;
+                        double a[4] = {1,2,3};
+                        char b[8] = {'A', 'n', 'y', 'e', 'o', 'n', 'g', '\0'};
+                        pa = a; pb = b;
+                        printf("First cell of a: %lf\n", pa[0]);
+                        printf("First cell of b: %c\n", pb[0]);
+                    }
+                </script></code></pre>
+                <span style="grid-column: 1 / -1;">
+                    Note the <code>\0</code> at the end of the string. This is the ASCII character <code>NULL</code>. The presence of <code>NULL</code> denotes the end of the string.
+                </span>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Strings in <code>printf</code> and <code>cout</code></h2>
+                <span style="grid-column: 1 / -1;">
+                    The format specifier for an entire string is <code>%s</code>. Strings are also compatible with the cout command without a formatting option.
+                </span>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Consider the following code:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <iostream>
+                        
+                        int main()
+                        {
+                            char pa[] = "Strings work in";
+                            char pb[] = "both C and C++";
+                            printf("%s\n", pa);
+                            std::cout << pb << std::endl;
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Inputting Strings</h2>
+                <span style="grid-column: 1 / -1;">
+                    Strings may be read from the keyboard using the <code>scanf()</code> function. Be careful though - it will not read spaces by default.
+                </span>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Consider the two scanf() commands:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <iostream>
+                        
+                        int main()
+                        {
+                            char str[100];
+                            printf("Enter a string: ");
+                            scanf("%s", str);           // Will not read spaces
+                            scanf("%[^\n]s", str);      // Will read spaces
+                            printf("You entered: %s\n", str);
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Copying String</h2>
+                <span style="grid-column: 1 / -1;">
+                    Strings cannot be copied with a simple <code>a = b</code> command; Instead, the function <code>strcpy(str1,str2)</code> must be used. For that syntax, <code>str1</code> is overwritten with <code>str2</code>. Consider the code:
+                </span>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Consider the code:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <string.h>
+                        
+                        int main()
+                        {
+                            char a[] = "Copy!", b[6];
+                            b = a;          // This won't work
+                            printf("Did it copy? check: %s\n", b);
+                            strcpy(b, a);
+                            printf("Did it copy? check: %s\n", b);
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Comparing Strings</h2>
+                <span style="grid-column: 1 / -1;">
+                    Strings cannot be compared with a simple <code>a == b</code> command; Instead, the function <code>strcmp(str1,str2)</code> must be used. The <code>strcmp()</code> function reads the two strings, one character at a time, until either different characters or the <code>NULL</code> character is encountered. If the <code>NULL</code> is encountered, then the strings are the same and the function returns a <code>0</code>. If different characters are encountered, then the ASCII position of <code>str1</code> relative to <code>str2</code> is returned.
+                </span>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Comparing Strings</h2>
+                <span style="grid-column: 1 / -1;">
+                    Consider the code:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    #include <string.h>
+                    
+                    int main()
+                    {
+                        char str1[] = "A", str2[] = "B";
+                        printf("Output of strcmp(str1,str2): %d\n", strcmp(str1,str2));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">String Length</h2>
+                <span style="grid-column: 1 / -1;">
+                    The length of a string may be found using the function <code>strlen()</code>. Note that the output of this function is an integer and does not include the <code>NULL</code> character.
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    #include <string.h>
+                    
+                    int main()
+                    {
+                        char str1[] = "Lorem ipsum dolor sit amet";
+                        printf("How long is that latin string?\n");
+                        printf("It is %d characters (not including the NULL!)");
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            display: 'grid',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
