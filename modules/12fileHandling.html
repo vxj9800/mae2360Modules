@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>File Handling</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">File Handling</h2>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">File Handling</h2>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Until now, all of our output has been to the screen:
+                    </span>
+                    <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        printf("This goes to the screen... doesn't it?\n");
+                    </script></code></pre>
+                </div>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    But what if you want to save this data to a file instead?
+                </p>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    This can be accomplished from the command line or through the source code.
+                </p>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Output to File from Command Line</h2>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        The basic syntax for outputting to a file from the command line is:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="bash"><script type="text/template">
+                        gcc MyProgram.cpp
+                        ./a.out > output.txt
+                    </script></code></pre>
+                    <span>
+                        All the outputs from the program will be stored in <code>output.txt</code> file. This syntax creates a new file and will overwrite any existing contents.
+                    </span>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        If you want to append to an existing file, the use following syntax:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="bash"><script type="text/template">
+                        ./a.out >> output.txt
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Output to File from Source Code</h2>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        To output to a file from within the code, the standard process is to create a pointer to an external file using following syntax:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        FILE *fPtr;
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        This pointer is then used to open an external file. There are three different ways to open this external file:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        ptr = fopen("pathToFile/filename", "w");    // overwrite/create
+                        ptr = fopen("pathToFile/filename", "a");    // append file
+                        ptr = fopen("pathToFile/filename", "r");    // read file
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Output to File from Source Code</h2>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Once the output file is open, data can be printed to this file. The syntax for this output is:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        fprintf(ptr, "This string will output to the file\n");
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Don't forget to close the file after printing the necessary content. The syntax for closing these files is:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        fclose(ptr);
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Multiple Output Files</h2>
+                <span style="grid-column: 1 / -1;">
+                    If multiple output files are intended, multiple pointers must be created:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    FILE *ptr1, *ptr2;
+                    ptr1 = fopen("data1.txt", "w"); // overwrite/create
+                    ptr2 = fopen("data2.dat", "w"); // overwrite/create
+                    fprintf(ptr1, "This goes to data1.txt\n");
+                    fprintf(ptr2, "This goes to data2.dat\n");
+                    fclose(ptr1);
+                    fclose(ptr2);
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Another Option: <code>&lt;fstream&gt;</code> in C++</h2>
+                <span style="grid-column: 1 / -1;">
+                    The <code>&lt;fstream&gt;</code> library provides other options for outputting to files. An array of outputs can be created for multiple files and the <code>&lt;&lt;</code> operator can be used for easier printing:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    std::ofstream fp[2];
+                    fp[0].open("data1.dat", std::ofstream::out);
+                    fp[1].open("data2.dat", std::ofstream::out);
+                    fp[0] << "This goes to data1.dat" << std::endl;
+                    fp[1] << "This goes to data2.dat" << std::endl;
+                    fp[0].close();
+                    fp[1].close();
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">File Handling in MATLAB</h2>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Outputting and inputting to files from Matlab are easily accomplished. To save the variables existing in the workspace to an external file:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        save('pathToFile/filename');                    % This will save all variables from the workspace
+                        save('pathToFile/filename', 'var1', 'var2');    % This will save only the listed variables
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        or
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        save pathToFile/filename var1 var2
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        and to read from an input file:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        load('pathToFile/filename');    % Load all the variables from file to workspace
+                    </script></code></pre>
+                </div>
+                <span class="fragment" style="grid-column: 1 / -1;">
+                    Be careful, the file extension for MATLAB has to be <code>.mat</code>.
+                </span>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            display: 'grid',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
