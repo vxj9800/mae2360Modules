@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Pointers</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Pointers</h2>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Hexadecimal Numbers</h2>
+                <p style="grid-column: 1 / -1;">
+                    Hexadecimal is a base-16 system of counting that uses 0-9 followed by a-f:
+                </p>
+                <table style="grid-column: 1 / -1;">
+                    <tr>
+                        <th>Hex</th>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                    </tr>
+                    <tr>
+                        <th>Int</th>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                    </tr>
+                </table>
+                <p style="grid-column: 1 / -1;">
+                    Ex: 14 is 0e, 24 is 18, 30 is 1e
+                </p>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    In C, hexadecimal is denoted by a “0x” proceeding the number<br>
+                    Ex: 0x7ffee5924ae0
+                </p>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Pointers and Computer Memory</h2>
+                <p style="grid-column: 1 / -1;">
+                    When a C compiler reads source code, the compiler maps each variable defined to an appropriate location in RAM that holds the value of that variable. That address may be accessed by using an <code>&</code> before a variable - called the "address of" operator or "reference" operator.
+                </p>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    A pointer is a variable that stores the memory address of another variable as its value. A <b>pointer variable</b> points to a variable of a certain type, and is created by adding a <code>*</code> in front of the variable.
+                </p>
+            </section>
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Pointers and Computer Memory</h2>
+                <span style="grid-column: 1 / -1;">
+                    Consider the following code:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main()
+                    {
+                        int a = 10;
+                        printf("The address of a is: %p\n", &a);
+                        return 0;
+                    }
+                </script></code></pre>
+                <span style="grid-column: 1 / -1;">
+                    Note that the format specifier for an address is <code>%p</code>, which prints a hexadecimal number.
+                </span>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Arrays and Computer Memory</h2>
+                <span style="grid-column: 1 / -1;">
+                    When generating arrays, the compiler automatically reserves enough bytes to store all the elements of the array:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main()
+                    {
+                        int a[] = {1, 2, 3};
+                        double b[] = {1, 2, 3};
+                        for (int i = 0; i < 3; i++)
+                            printf("&a[%d]: %p\n", i, &a[i]);
+                        for (int i = 0; i < 3; i++)
+                            printf("&b[%d]: %p\n", i, &b[i]);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Using Pointers</h2>
+                <span style="grid-column: 1 / -1;">
+                    A pointer is declared by the syntax <code>dataType *p</code> and may be assigned the address of another variable <code>x</code>:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main()
+                    {
+                        double a = 10;
+                        double *p;
+                        p = &a;
+                        printf("&a: \t%p\n", &a);   // Will print the address
+                        printf("p: \t%p\n", p);     // Will print the address
+                        printf("a: \t%lf\n", a);    // Will print the value
+                        printf("*p: \t%lf\n", *p);  // Will print the value
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Incrementing Pointers</h2>
+                <span style="grid-column: 1 / -1;">
+                    Pointers may be incremented and decremented just like other variables. Since the type of stored information is defined, the pointer will move through the amount of bytes occupied by the data type when the pointer is incremented/decremented:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main()
+                    {
+                        float a[] = {1,2,3};
+                        float *pa = &a[0];
+                        double b[] = {1,2,3};
+                        double *pb = &b[0];
+                        printf(“float \t %p \t %p \t %p\n”, pa, pa + 1, pa + 2);
+                        printf(“double \t %p \t %p \t %p\n”, pb, pb + 1, pb + 2);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Call by Value</h2>
+                <span style="grid-column: 1 / -1;">
+                    Pointers are most useful for avoiding the problem associated with the scope of variables. Consider the following program:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    void first(double IN)
+                    {
+                        IN = IN * 10.0;
+                    }
+                    
+                    int main()
+                    {
+                        double a = 10.0;
+                        first(a);
+                        printf("The value of a is: %lf\n", a);
+                        return 0;
+                    }
+                </script></code></pre>
+                <span style="grid-column: 1 / -1;">Will the variable <code>a</code> be updated?</span>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Call by Address</h2>
+                <span style="grid-column: 1 / -1;">
+                    Pointers can be used as a function argument. Consider the following program:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    void second(double *IN)
+                    {
+                        *IN = *IN * 10.0;
+                    }
+                    
+                    int main()
+                    {
+                        double a = 10.0;
+                        second(a);
+                        printf("The value of a is: %lf\n", a);
+                        return 0;
+                    }
+                </script></code></pre>
+                <span style="grid-column: 1 / -1;">Will the variable <code>a</code> be updated?</span>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Arrays are Pointers</h2>
+                <span style="grid-column: 1 / -1;">
+                    Arrays actually are pointers that point to the address of the first element in the memory.
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    void showOff(int *IN)
+                    {
+                        IN[0] = 10; IN[1] = 20; IN[2] = 30;
+                    }
+                    
+                    int main()
+                    {
+                        int a[] = {1,2,3};
+                        printf("Original a: %d, %d, %d", a[0], a[1], a[2]);
+                        showOff(a);
+                        printf("Updated a: %d, %d, %d", a[0], a[1], a[2]);
+                        printf("What will this do? %d, %d, %d", *a, *(a+1), *(a+2));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Function Pointers</h2>
+                <span style="grid-column: 1 / -1;">
+                    A pointer can also be used to point to a function. Consider the following example:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    #include <math.h>
+
+                    double f1(double IN)
+                    {
+                        return 0.5 * IN;
+                    }
+
+                    double f2(double IN)
+                    {
+                        return IN * IN;
+                    }
+                    
+                    int main()
+                    {
+                        double (*funPtr)(double);
+                        double PI = acos(-1);
+                        funPtr = &f1;
+                        printf("funPtr(2) = %lf\n", funPtr(2));
+                        funPtr = &f2;
+                        printf("funPtr(2) = %lf\n", funPtr(2));
+                        funPtr = &tan;
+                        printf("funPtr(2) = %lf\n", funPtr(2));
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            display: 'grid',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
