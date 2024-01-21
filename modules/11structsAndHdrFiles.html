@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Structures and Header Files</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Structures and Header Files</h2>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Structures</h2>
+                <p style="grid-column: 1 / -1;">
+                    Recall that arrays can be used to store multiple elements under the same name. All of these elements however must be the same type. What if you want to store multiple elements of various types together under the same name?
+                </p>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    A structure allows for multiple elements (members) of different types to be stored under a single name. Structures are convenient for passing numerous variables through function calls without needing to pass each one explicitly.
+                </p>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Structure Syntax</h2>
+                <span style="grid-column: 1 / -1;">
+                    The basic syntax for creating a structure is:
+                </span>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    struct newTypeName
+                    {
+                        type member1;
+                        type member2;
+                    };
+                    
+                    int main()
+                    {
+                        struct newTypeName structName;
+                        structName.member1 = ' ';
+                        return 0;
+                    }
+                </script></code></pre>
+                <span class="fragment" style="grid-column: 1 / -1;">
+                    Note that defining a structure is analogous to creating a new data type. A <code>.</code> is used to access the members. Also note the inclusion of semicolons in the definition of the structure.
+                </span>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Structure Example</h2>
+                <pre data-id="structExPtr" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    struct student
+                    {
+                        const char *ID;
+                        unsigned int Midterm;
+                        unsigned int Final;
+                        char Grade;
+                    };
+                    
+                    int main()
+                    {
+                        struct student smith = {"1001234567", 89, 98, 'A'};
+                        struct student doe = {"1001445566", 55, 43, 'F'};
+                        printf("Smith Grade: %c\n", smith.Grade);
+                        doe.Grade = 'D';
+                        printf("Doe Grade: %c\n", doe.Grade);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Pointers to Structures</h2>
+                <span style="grid-column: 1 / -1;">
+                    Pointers to structures can be created. However, note the new way to access the members. Use <code>-></code> instead of <code>.</code>:
+                </span>
+                <pre data-id="structExPtr" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    struct student
+                    {
+                        const char *ID;
+                        char Grade;
+                    };
+                    
+                    int main()
+                    {
+                        struct student smith={"1001234567", 'A'};
+                        struct student *ptr;
+                        ptr = &smith;
+                        printf("Smith ID: %s\n", ptr->ID);
+                        printf("Smith Grade: %c\n", ptr->Grade);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Arrays of Structures</h2>
+                <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+
+                    struct student
+                    {
+                        const char *First;
+                        const char *Last;
+                        char Grade;
+                    };
+                    
+                    int main()
+                    {
+                        struct student myClass[15];
+                        myClass[0].First = "Vatsal";
+                        myClass[0].Last = "Joshi";
+                        myClass[0].Grade = 'D';
+                        printf("Student Name: %s %s\n", myClass[0].First, myClass[0].Last);
+                        printf("Grade: %c\n", myClass[0].Grade);
+                        return 0;
+                    }
+                </script></code></pre>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Structures in MATLAB</h2>
+                <span style="grid-column: 1 / -1;">
+                    Creating a structure in MATLAB requires only assigning a member to the structure name.
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Following command creates a structure called <code>str</code> and gives it a component <code>A</code> with a value of 10:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        str.A = 10;
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Following line adds a new member <code>B</code> that is a \(\left(4 \times 4\right)\) matrix containing random numbers to the structure <code>str</code>:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        str.B = randn(4,4);
+                    </script></code></pre>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Accessing or editing a member of the structure is done as:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="matlab"><script type="text/template">
+                        str.A = str.A + 100;
+                        fprintf('The current value of A is: %f', str.A);
+                    </script></code></pre>
+                </div>
+                <span class="fragment" style="grid-column: 1 / -1;">
+                    Both <code>A</code> and <code>B</code> can now be passed to a single function simply by passing <code>str</code>.
+                </span>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Header Files</h2>
+                <span style="grid-column: 1 / -1;">
+                    Suppose you had a series of declarations that would usually go before <code>int main()</code> that you want to reuse in several C programs. All of those declarations can be placed in a header file which can then be <em>included</em> at the top of your code.
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        The <code>#include</code> pre-processor that you have used so far follows the syntax:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <file.h>
+                    </script></code></pre>
+                    <span>
+                        where <code>file.h</code> is a system header file stored in standard library folders (is part of the compiler).
+                    </span>
+                </div>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        If the header file is in the local directory (where the current source code is), then syntax would be:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                                        #include "myHeader.h"
+                                    </script></code></pre>
+                </div>
+                <span class="fragment" style="grid-column: 1 / -1;">
+                    This same approach can be used to include other source code (<code>.c</code>) files as well that may include function definitions. The effect is the same as a header file.
+                </span>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Header Files</h2>
+                <span style="grid-column: 1 / -1;">
+                    Suppose you include the header file into multiple source files that will all be run together. The compiler would naturally try to load all the definitions again, each time the <code>#include &lt;file.h&gt;</code> is encountered. It is a good idea to include a conditional statement to prevent the same header file from being copied twice.
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Use the following syntax:
+                    </span>
+                    <pre><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #ifndef __HEADER_FILE_NAME__        // If the macro __HEADER_FILE_NAME__ is not defined yet
+                        #define __HEADER_FILE_NAME__        // then define the macro __HEADER_FILE_NAME__
+                            // contents of the header file
+                        #endif // __HEADER_FILE_NAME__      // End of the #ifndef block
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            display: 'grid',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
