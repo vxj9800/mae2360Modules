@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Command Line Arguments</title>
+
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../theme/uta.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../codeTheme/night-owl.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Command Line Arguments</h2>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Command Line Arguments</h2>
+                <span>
+                    Until now, we have used <code>int main()</code> as if it did not have any inputs. While this function definition works fine, the function main actually does have two standard inputs.
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Consider this more general definition of <code>int main()</code>:
+                    </span>
+                    <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        int main(int argc, char *argv[])
+                    </script></code></pre>
+                </div>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    The integer <code>argc</code> specifies the number of command line arguments received. The argument <code>*argv[]</code> is an array of character pointers. So <code>argv</code> is an array of strings.
+                </p>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Command Line Arguments</h2>
+                <span>
+                    So, how to enter command line arguments?
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Consider following syntax:
+                    </span>
+                    <pre style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="bash"><script type="text/template">
+                        g++ MyProgram.cpp
+                        ./a.out 1 2 3 4 5 6 7
+                    </script></code></pre>
+                </div>
+                <p class="fragment" style="grid-column: 1 / -1;">
+                    In this example, the program <code>MyProgram.cpp</code> is compiled. During execution, the numbers <code>1 2 3 4 5 6 7</code> were also input on the same line. These numbers then become the command line arguments that are pointed to by each element of the <code>argv</code> array.
+                </p>
+            </section>
+
+
+
+            <section data-auto-animate data-auto-animate-restart>
+                <h2 style="grid-column: 1 / -1;">Printing Command Line Arguments</h2>
+                <span style="grid-column: 1 / -1;">
+                    Consider the following code:
+                </span>
+                <pre data-id="readArgsEx" style="grid-column: 1 / -1;"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                    #include <stdio.h>
+                    
+                    int main(int argc, char *argv[])
+                    {
+                        printf("You entered %d arguments.\n", argc);
+                        for (int i = 0; i < argc; i++)
+                            printf("%d: %s\n", i, argv[i]);
+                        return 0;
+                    }
+                </script></code></pre>
+                <span style="grid-column: 1 / -1;">
+                    Note that the format specifier used for the contents of <code>argv[]</code> is <code>%s</code>.
+                </span>
+                <span class="fragment" style="grid-column: 1 / -1;">
+                    What will this code do?
+                </span>
+            </section>
+
+
+
+            <section data-auto-animate>
+                <h2 style="grid-column: 1 / -1;">Converting Strings to Other Types</h2>
+                <span style="grid-column: 1 / -1;">
+                    The command line arguments are by default stored as strings. These inputs may be converted to other types using the functions <code>atoi</code> (ASCII to integer) and <code>atof</code> (ASCII to float) stored in the <code>&lt;stdlib.h&gt;</code> header file.
+                </span>
+                <div style="grid-column: 1 / -1;">
+                    <span>
+                        Consider the code:
+                    </span>
+                    <pre data-id="readArgsEx"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <stdlib.h>
+                        
+                        int main(int argc, char *argv[])
+                        {
+                            printf("You entered %d arguments.\n", argc);
+                            for (int i = 0; i < argc; i++)
+                                printf("%d: %s\n", i, argv[i]);
+                                //printf("%d: %d\n", i, atoi(argv[i]));
+                                //printf("%d: %f\n", i, atof(argv[i]));
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+            <section>
+                <h2 style="grid-column: 1 / -1;">Using Command Line Arguments</h2>
+                <span style="grid-column: 1 / -1;">
+                    Suppose you want to write code that sums numbers, but you don't know ahead of time what and how many numbers need to be added. You can accomplish this task using command line arguments.
+                </span>
+                <div class="fragment" style="grid-column: 1 / -1;">
+                    <span>
+                        Consider following code:
+                    </span>
+                    <pre data-id="readArgsEx"><code data-trim data-noescape data-line-numbers class="c++"><script type="text/template">
+                        #include <stdio.h>
+                        #include <stdlib.h>
+                        
+                        int main(int argc, char *argv[])
+                        {
+                            double sum = 0.0;
+                            for (int i = 1; i < argc; i++)
+                                sum += atof(argv[i]);
+                            printf("You entered %d numbers.\n", argc);
+                            printf("The sum of all the numbers is: %f\n", sum);
+                            return 0;
+                        }
+                    </script></code></pre>
+                </div>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/notes/notes.js"></script>
+    <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            display: 'grid',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
+    </script>
+</body>
+
+</html>
