@@ -64,10 +64,10 @@
                         
                         int main()
                         {
-                            double a[X] = {1,2,3}
+                            double a[X] = {1,2,3};
                             char b[Y] = "Anyeong";
-                            printf("Last element of a: %lf\n", a[X]);
-                            printf("Last element of b: %c\n", b[Y]);
+                            printf("Last element of a: %lf\n", a[X - 1]);
+                            printf("Last element of b: %c\n", b[Y - 1]);
                             return 0;
                         }
                     </script></code></pre>
@@ -91,7 +91,7 @@
                     {
                         double *pa;
                         char *pb;
-                        double a[4] = {1,2,3};
+                        double a[3] = {1,2,3};
                         char b[8] = {'A', 'n', 'y', 'e', 'o', 'n', 'g', '\0'};
                         pa = a; pb = b;
                         printf("First cell of a: %lf\n", pa[0]);
@@ -229,8 +229,8 @@
                     int main()
                     {
                         char str1[] = "Lorem ipsum dolor sit amet";
-                        printf("How long is that latin string?\n");
-                        printf("It is %d characters (not including the NULL!)");
+                        printf("How long is that fake latin string?\n");
+                        printf("It is %ld characters (not including the NULL!)", strlen(str1));
                         return 0;
                     }
                 </script></code></pre>
